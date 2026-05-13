@@ -1,102 +1,79 @@
-KINAN App
-KINAN
-Kanal Informasi dan Layanan
+# KINAN App
 
-Aplikasi mobile internal RSUD Dr. Soetomo untuk komunikasi, informasi, dan layanan terintegrasi bagi seluruh tenaga medis dan pegawai rumah sakit.
+KINAN (Kanal Informasi dan Layanan) adalah aplikasi mobile berbasis React Native untuk media informasi dan layanan internal RSUD Dr. Soetomo.
 
-</div>
-✨ Fitur Utama
-🔐 Authentication Login & Register
-🏥 Dashboard Informasi Rumah Sakit
-📢 Informasi & Pengumuman Internal
-🩺 Layanan Medis Terintegrasi
-📂 Menu Master Data
-👤 Profile Pegawai
-🔔 Notifikasi Internal
-📱 UI Modern & Responsive
-⚡ Dibangun menggunakan React Native + Expo + TypeScript
-📸 Tampilan Aplikasi
-🛠️ Tech Stack
-React Native
-Expo
-TypeScript
-NativeWind (Tailwind CSS untuk React Native)
-React Navigation
-Expo Vector Icons
-📦 Instalasi
-1. Clone Repository
+Project ini saat ini masih berupa tampilan frontend/UI dan belum terhubung dengan backend API.
+
+---
+
+## Tech Stack
+
+- React Native
+- Expo
+- TypeScript
+- NativeWind / Tailwind CSS
+- React Navigation
+
+---
+
+## Fitur Tampilan
+
+- Landing Screen
+- Login Screen
+- Register Screen
+- Dashboard Screen
+- Profile Screen
+- Bottom Navigation
+
+---
+
+## Instalasi
+
+Clone repository:
+
+```bash
 git clone https://github.com/username/kinan-app.git
-2. Masuk ke Folder Project
+```
+
+Masuk ke folder project:
+
+```bash
 cd kinan-app
-3. Install Dependency
+```
+
+Install dependency:
+
+```bash
 npm install
+```
 
-atau
+Jalankan project:
 
-yarn install
-4. Jalankan Project
+```bash
 npx expo start
-📱 Menjalankan di Device
-Android
-Install aplikasi Expo Go
-Scan QR Code dari terminal Expo
-iOS
-Install Expo Go dari App Store
-Scan QR Code
-📂 Struktur Folder
+```
+
+---
+
+## Struktur Folder
+
+```bash
 src/
-│
 ├── screens/
-│   ├── auth/
-│   │   ├── LandingScreen.tsx
-│   │   ├── SignInScreen.tsx
-│   │   └── RegisterScreen.tsx
-│   │
-│   ├── dashboard/
-│   └── profile/
-│
 ├── components/
-├── navigation/
 ├── assets/
+├── navigation/
 └── utils/
-🚀 Roadmap
- Integrasi API Backend Laravel
- JWT Authentication
- Push Notification
- Dark Mode
- Chat Internal
- Rekam Medis Digital
- Jadwal Dokter
- Upload Dokumen
- Integrasi SSO RSUD Dr. Soetomo
-🔐 Authentication Flow
-Landing Screen
-   ↓
-Login / Register
-   ↓
-Dashboard (Main App)
-👨‍💻 Development
-Menjalankan Linter
-npm run lint
-Build Android
-npx expo run:android
-Build iOS
-npx expo run:ios
-📄 Environment
+```
 
-Contoh .env
+---
 
-API_URL=https://your-api-url.com/api
-🤝 Kontribusi
+## Catatan
 
-Pull request dan kontribusi sangat terbuka untuk pengembangan aplikasi KINAN.
+Aplikasi ini masih tahap pengembangan UI/Frontend dan belum menggunakan backend maupun database.
 
-📄 License
+---
 
-MIT License
+## Author
 
-<div align="center">
-
-Developed with ❤️ for RSUD Dr. Soetomo
-
-</div>
+Developed by RSUD Dr Soetomo
