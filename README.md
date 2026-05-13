@@ -1,5 +1,4 @@
 KINAN App
-<div align="center"> <img src="./assets/logo/KINAN.png" width="140" />
 KINAN
 Kanal Informasi dan Layanan
 
@@ -17,12 +16,6 @@ Aplikasi mobile internal RSUD Dr. Soetomo untuk komunikasi, informasi, dan layan
 📱 UI Modern & Responsive
 ⚡ Dibangun menggunakan React Native + Expo + TypeScript
 📸 Tampilan Aplikasi
-Landing Screen
-<img src="./screenshots/landing.png" width="250" />
-Login Screen
-<img src="./screenshots/login.png" width="250" />
-Dashboard
-<img src="./screenshots/dashboard.png" width="250" />
 🛠️ Tech Stack
 React Native
 Expo
