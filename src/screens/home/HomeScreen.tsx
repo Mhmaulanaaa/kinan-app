@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 
-import { Ionicons, Feather } from "@expo/vector-icons";
+import { Ionicons, Feather, FontAwesome } from "@expo/vector-icons";
 
 const quickMenus = [
   {
@@ -45,14 +45,23 @@ const news = [
   {
     title: "Pengumuman",
     desc: "Update jadwal pelatihan BLS",
+    bg: "bg-green-100",
+    icon: "bullhorn",
+    color: "#0891b2",
   },
   {
     title: "Protokol Baru",
     desc: "Panduan tatalaksana sepsis",
+    bg: "bg-blue-100",
+    icon: "file-text",
+    color: "#2563eb",
   },
   {
     title: "SOP",
     desc: "Revisi SOP Identifikasi Pasien",
+    bg: "bg-orange-100",
+    icon: "clipboard",
+    color: "#ea580c",
   },
 ];
 
@@ -170,8 +179,12 @@ export default function HomeScreen() {
                 key={index}
                 className="bg-white rounded-2xl p-4 mb-4 flex-row items-center"
               >
-                <View className="bg-orange-100 p-3 rounded-2xl">
-                  <Feather name="file-text" size={20} color="#f97316" />
+                <View className={`${item.bg}   p-3 rounded-2xl`}>
+                  <FontAwesome
+                    name={item.icon as any}
+                    size={24}
+                    color={item.color}
+                  />
                 </View>
 
                 <View className="ml-4 flex-1">

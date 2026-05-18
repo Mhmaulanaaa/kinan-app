@@ -8,18 +8,22 @@ const menus = [
   {
     title: "Ubah Status",
     icon: "sync",
+    screen: "ChangeStatus",
   },
   {
     title: "Pengaturan Akun",
     icon: "settings",
+    screen: "AccountSettings",
   },
   {
     title: "Bantuan",
     icon: "help-circle",
+    screen: "Help",
   },
   {
     title: "Tentang KINAN",
     icon: "information-circle",
+    screen: "About",
   },
 ];
 
@@ -114,6 +118,8 @@ export default function ProfileScreen() {
         {menus.map((item, index) => (
           <TouchableOpacity
             key={index}
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate(item.screen)}
             className="flex-row items-center justify-between py-5 border-t border-gray-100"
           >
             <View className="flex-row items-center">
