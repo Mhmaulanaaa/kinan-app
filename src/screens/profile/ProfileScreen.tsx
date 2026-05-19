@@ -8,22 +8,22 @@ const menus = [
   {
     title: "Ubah Status",
     icon: "sync",
-    screen: "ChangeStatus",
+    screen: "ChangeStatusProfile",
   },
   {
     title: "Pengaturan Akun",
     icon: "settings",
-    screen: "AccountSettings",
+    screen: "AccountSettingsProfile",
   },
   {
     title: "Bantuan",
     icon: "help-circle",
-    screen: "Help",
+    screen: "HelpProfile",
   },
   {
     title: "Tentang KINAN",
     icon: "information-circle",
-    screen: "About",
+    screen: "AboutProfile",
   },
 ];
 

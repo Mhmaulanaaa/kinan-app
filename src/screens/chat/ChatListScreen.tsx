@@ -8,6 +8,8 @@ import {
 } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const chats = [
   {
@@ -34,7 +36,8 @@ const chats = [
 
 export default function ChatListScreen() {
   return (
-    <View className="flex-1 bg-white pt-16 px-5">
+    <SafeAreaView className="flex-1 bg-white pt-8 px-5">
+      <StatusBar style="dark" />
       {/* HEADER */}
       <View className="flex-row items-center justify-between">
         <Text className="text-4xl font-extrabold text-gray-800">Chat</Text>
@@ -100,6 +103,6 @@ export default function ChatListScreen() {
           </TouchableOpacity>
         ))}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }

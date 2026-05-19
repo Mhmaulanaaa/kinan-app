@@ -8,48 +8,62 @@ import {
 
 import { Ionicons } from "@expo/vector-icons";
 
+import { useNavigation } from "@react-navigation/native";
+
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 const layanan = [
   {
     title: "Layanan Medis",
     icon: "medkit-outline",
     color: "bg-green-100",
     iconColor: "#16a34a",
+    screen: "LayananMedis",
   },
   {
     title: "Layanan SDM",
     icon: "people-outline",
     color: "bg-orange-100",
     iconColor: "#ea580c",
+    screen: "LayananSDM",
   },
   {
     title: "Layanan IT",
     icon: "desktop-outline",
     color: "bg-purple-100",
     iconColor: "#9333ea",
+    screen: "LayananIT",
   },
   {
     title: "Layanan Umum",
     icon: "business-outline",
     color: "bg-blue-100",
     iconColor: "#2563eb",
+    screen: "LayananUmum",
   },
   {
     title: "Layanan Keuangan",
     icon: "wallet-outline",
     color: "bg-yellow-100",
     iconColor: "#ca8a04",
+    screen: "LayananKeuangan",
   },
   {
     title: "Layanan Diklat",
     icon: "school-outline",
     color: "bg-cyan-100",
     iconColor: "#0891b2",
+    screen: "LayananDiklat",
   },
 ];
 
 export default function LayananScreen() {
+  const navigation = useNavigation<any>();
+
   return (
-    <ScrollView className="flex-1 bg-white pt-16 px-5">
+    <SafeAreaView className="flex-1 bg-white pt-8 px-5">
+      <StatusBar style="dark" />
       <Text className="text-3xl font-extrabold text-gray-800">Layanan</Text>
 
       {/* SEARCH */}
@@ -68,6 +82,7 @@ export default function LayananScreen() {
           <TouchableOpacity
             key={index}
             activeOpacity={0.8}
+            onPress={() => navigation.navigate(item.screen)}
             className="w-[31%] bg-white border border-gray-100 rounded-3xl p-4 mb-4 items-center shadow-sm"
           >
             <View
@@ -121,6 +136,6 @@ export default function LayananScreen() {
           </View>
         </View>
       </View>
-    </ScrollView>
+    </SafeAreaView>
   );
 }

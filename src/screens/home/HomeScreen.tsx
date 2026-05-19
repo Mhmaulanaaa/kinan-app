@@ -2,42 +2,51 @@ import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 
 import { Ionicons, Feather, FontAwesome } from "@expo/vector-icons";
 
+import { useNavigation } from "@react-navigation/native";
+
+
 const quickMenus = [
   {
     title: "Chat Internal",
     icon: "chatbubble-outline",
     bg: "bg-green-100",
     color: "#16a34a",
+    screen: "ChatInternalHome",
   },
   {
     title: "Informasi",
     icon: "document-text-outline",
     bg: "bg-blue-100",
     color: "#2563eb",
+    screen: "InformasiHome",
   },
   {
     title: "Pengumuman",
     icon: "megaphone-outline",
     bg: "bg-yellow-100",
     color: "#ca8a04",
+    screen: "PengumumanHome",
   },
   {
     title: "Layanan",
     icon: "grid-outline",
     bg: "bg-purple-100",
     color: "#9333ea",
+    screen: "Layanan",
   },
   {
     title: "Dokumen",
     icon: "folder-outline",
     bg: "bg-orange-100",
     color: "#ea580c",
+    screen: "DokumenHome",
   },
   {
     title: "Panduan",
     icon: "book-outline",
     bg: "bg-cyan-100",
     color: "#0891b2",
+    screen: "PanduanHome",
   },
 ];
 
@@ -66,6 +75,7 @@ const news = [
 ];
 
 export default function HomeScreen() {
+  const navigation = useNavigation<any>();
   return (
     <View className="flex-1 bg-[#f3f5f7]">
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -130,6 +140,7 @@ export default function HomeScreen() {
                 <TouchableOpacity
                   key={index}
                   activeOpacity={0.8}
+                  onPress={() => navigation.navigate(item.screen as any)}
                   className="w-[30%] bg-white rounded-3xl p-4 items-center mb-4 shadow-sm"
                   style={{
                     shadowColor: "#000",

@@ -1,5 +1,6 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
-
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
 const notif = [
   {
     title: "Pengumuman Baru",
@@ -17,7 +18,8 @@ const notif = [
 
 export default function NotificationScreen() {
   return (
-    <View className="flex-1 bg-white pt-16 px-5">
+    <SafeAreaView className="flex-1 bg-white pt-8 px-5">
+      <StatusBar style="dark" />
       <View className="flex-row items-center justify-between">
         <Text className="text-3xl font-extrabold text-gray-800">
           Notifikasi
@@ -54,6 +56,6 @@ export default function NotificationScreen() {
           </TouchableOpacity>
         ))}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }

@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import HomeScreen from "../screens/home/HomeScreen";
 import ChatListScreen from "../screens/chat/ChatListScreen";
-import LayananScreen from "../screens/layanan/LayananScreen";
 import NotificationScreen from "../screens/notif/NotificationScreen";
-import ProfileScreen from "../screens/profile/ProfileScreen";
+import ProfileScreen from "./ProfileStack";
+import HomeScreen from "./HomeStack";
+import LayananScreen from "./LayananStack";
 
 import { Ionicons } from "@expo/vector-icons";
 
