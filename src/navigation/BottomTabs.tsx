@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import ChatListScreen from "../screens/chat/ChatListScreen";
 import NotificationScreen from "../screens/notif/NotificationScreen";
+import ChatScreen from "./ChatStack";
 import ProfileScreen from "./ProfileStack";
 import HomeScreen from "./HomeStack";
 import LayananScreen from "./LayananStack";
@@ -47,7 +47,7 @@ export default function BottomTabs() {
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Chat" component={ChatListScreen} />
+      <Tab.Screen name="Chat" component={ChatScreen} />
       <Tab.Screen name="Layanan" component={LayananScreen} />
       <Tab.Screen name="Notif" component={NotificationScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
