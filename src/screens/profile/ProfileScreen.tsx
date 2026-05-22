@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { Ionicons, MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
+import { logoutToast as logoutToastConfig } from "../../utils/toastConfig";
 
 const menus = [
   {
@@ -142,6 +143,7 @@ export default function ProfileScreen() {
           activeOpacity={0.8}
           onPress={() => {
             navigation.navigate("Login");
+            logoutToastConfig();
           }}
         >
           <Text className="text-white text-center font-bold text-base">
