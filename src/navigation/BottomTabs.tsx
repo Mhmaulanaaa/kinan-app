@@ -36,7 +36,7 @@ export default function BottomTabs() {
             iconName = "chatbubble";
           } else if (route.name === "Layanan") {
             iconName = "grid";
-          } else if (route.name === "Notif") {
+          } else if (route.name === "Notifications") {
             iconName = "notifications";
           } else if (route.name === "Profile") {
             iconName = "person";
@@ -49,7 +49,7 @@ export default function BottomTabs() {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Chat" component={ChatScreen} />
       <Tab.Screen name="Layanan" component={LayananScreen} />
-      <Tab.Screen name="Notif" component={NotificationScreen} />
+      <Tab.Screen name="Notifications" component={NotificationScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
