@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import NotificationScreen from "../screens/notif/NotificationScreen";
 import ChatScreen from "./ChatStack";
@@ -11,21 +12,33 @@ import { Ionicons } from "@expo/vector-icons";
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabs() {
+  const insets = useSafeAreaInsets();
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
 
         tabBarStyle: {
-          height: 100,
-          paddingBottom: 10,
+          height: 70 + insets.bottom,
+          paddingBottom: insets.bottom > 0 ? insets.bottom : 10,
           paddingTop: 10,
           borderTopWidth: 0,
           elevation: 10,
+          backgroundColor: "white",
         },
 
         tabBarActiveTintColor: "#16a34a",
         tabBarInactiveTintColor: "#9ca3af",
+
+        tabBarLabelStyle: {
+          fontSize: 12,
+          marginBottom: 5,
+        },
+
+        tabBarIconStyle: {
+          marginTop: 5,
+        },
 
         tabBarIcon: ({ color, size }) => {
           let iconName: any;
@@ -36,7 +49,7 @@ export default function BottomTabs() {
             iconName = "chatbubble";
           } else if (route.name === "Layanan") {
             iconName = "grid";
-          } else if (route.name === "Notifications") {
+          } else if (route.name === "Notif") {
             iconName = "notifications";
           } else if (route.name === "Profile") {
             iconName = "person";
