@@ -82,6 +82,8 @@ export default function ChatInternalScreen() {
     0,
   );
 
+  const [showMenu, setShowMenu] = useState(false);
+
   return (
     <View className="flex-1 bg-slate-100">
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -233,15 +235,46 @@ export default function ChatInternalScreen() {
       </ScrollView>
 
       {/* FLOATING BUTTON */}
+      {showMenu && (
+        <View className="absolute bottom-28 right-6">
+          {/* Grup Baru */}
+          <TouchableOpacity
+            className="flex-row items-center bg-white px-4 py-3 rounded-full mb-3 shadow"
+            onPress={() => {
+              setShowMenu(false);
+              navigation.navigate("NewGroup");
+            }}
+          >
+            <Ionicons name="people" size={22} color="#16a34a" />
+            <Text className="ml-2 text-gray-800 font-medium">Grup Baru</Text>
+          </TouchableOpacity>
+
+          {/* Chat Baru */}
+          <TouchableOpacity
+            className="flex-row items-center bg-white px-4 py-3 rounded-full shadow"
+            onPress={() => {
+              setShowMenu(false);
+              navigation.navigate("NewChat");
+            }}
+          >
+            <Ionicons name="chatbubble-ellipses" size={22} color="#16a34a" />
+            <Text className="ml-2 text-gray-800 font-medium">Chat Baru</Text>
+          </TouchableOpacity>
+        </View>
+      )}
       <TouchableOpacity
-        className="absolute bottom-8 right-6 w-16 h-16 rounded-full bg-green-600 items-center justify-center"
+        className="absolute bottom-5 right-6 w-16 h-16 rounded-full bg-green-600 items-center justify-center shadow"
         activeOpacity={0.8}
+        onPress={() => setShowMenu(!showMenu)}
+        style={{
+          shadowColor: "#16a34a",
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.1,
+          shadowRadius: 8,
+          elevation: 8,
+        }}
       >
-        <Ionicons
-          name={activeTab === "chat" ? "chatbubble-ellipses" : "people"}
-          size={28}
-          color="white"
-        />
+        <Ionicons name={showMenu ? "close" : "add"} size={30} color="white" />
       </TouchableOpacity>
     </View>
   );

@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import ChatInternalScreen from "../screens/chat/ChatInternalScreen";
 import ChatScreen from "../screens/chat/ChatListScreen";
 import ChatDetailScreen from "../screens/chat/ChatDetailScreen";
 import NewChatScreen from "../screens/chat/NewChatScreen";
@@ -12,6 +13,7 @@ export default function ChatStack() {
       <Stack.Screen name="Chat" component={ChatScreen} />
       <Stack.Screen name="ChatDetail" component={ChatDetailScreen} />
       <Stack.Screen name="NewChat" component={NewChatScreen} />
+      <Stack.Screen name="ChatInternal" component={ChatInternalScreen} />
     </Stack.Navigator>
   );
 }
