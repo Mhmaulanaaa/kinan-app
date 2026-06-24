@@ -66,7 +66,8 @@ export default function LayananMedisScreen() {
       item.desc?.toLowerCase().includes(search.toLowerCase()),
   );
   const navigation = useNavigation<any>();
-
+  console.log("Search:", search);
+  console.log("Filtered:", filteredMedis);
   return (
     <View className="flex-1 bg-gray-50">
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -135,6 +136,7 @@ export default function LayananMedisScreen() {
             ) : (
               filteredMedis.map((item, index) => (
                 <TouchableOpacity
+                  key={index}
                   activeOpacity={0.8}
                   className="bg-white rounded-[28px] p-5 mb-4"
                   style={{

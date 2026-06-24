@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
 
 const sdm = [
   {
@@ -37,7 +38,13 @@ const sdm = [
 ];
 
 export default function LayananSDMScreen() {
+  const [search, setSearch] = useState("");
   const navigation = useNavigation<any>();
+  const filteredSDM = sdm.filter(
+    (item) =>
+      item.title?.toLowerCase().includes(search.toLowerCase()) ||
+      item.desc?.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <View className="flex-1 bg-white">
@@ -90,9 +97,16 @@ export default function LayananSDMScreen() {
           <View className="bg-gray-100 rounded-2xl px-4 py-3 flex-row items-center mb-5">
             <Ionicons name="search" size={20} color="#6b7280" />
             <TextInput
+              value={search}
+              onChangeText={setSearch}
               placeholder="Cari layanan SDM..."
               className="flex-1 ml-2"
             />
+            {search.length > 0 && (
+              <TouchableOpacity onPress={() => setSearch("")}>
+                <Ionicons name="close-circle" size={22} color="#6b7280" />
+              </TouchableOpacity>
+            )}
           </View>
 
           {/* INFO CARD */}
@@ -110,35 +124,48 @@ export default function LayananSDMScreen() {
             </View>
           </View>
 
-          {/* MENU */}
-          {sdm.map((item, index) => (
-            <TouchableOpacity
-              key={index}
-              activeOpacity={0.85}
-              className="bg-white border border-gray-100 rounded-3xl p-4 mb-4 flex-row items-center shadow-sm"
-            >
-              <View
-                style={{ backgroundColor: `${item.color}20` }}
-                className="w-16 h-16 rounded-2xl items-center justify-center"
+          {filteredSDM.length === 0 ? (
+            <View className="items-center mt-16">
+              <Ionicons name="search-outline" size={70} color="#d1d5db" />
+
+              <Text className="text-lg font-semibold text-gray-500 mt-4">
+                Layanan tidak ditemukan
+              </Text>
+
+              <Text className="text-gray-400 mt-1 text-center px-10">
+                Coba gunakan kata kunci lain.
+              </Text>
+            </View>
+          ) : (
+            filteredSDM.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                activeOpacity={0.85}
+                className="bg-white border border-gray-100 rounded-3xl p-4 mb-4 flex-row items-center shadow-sm"
               >
-                <Ionicons
-                  name={item.icon as any}
-                  size={28}
-                  color={item.color}
-                />
-              </View>
+                <View
+                  style={{ backgroundColor: `${item.color}20` }}
+                  className="w-16 h-16 rounded-2xl items-center justify-center"
+                >
+                  <Ionicons
+                    name={item.icon as any}
+                    size={28}
+                    color={item.color}
+                  />
+                </View>
 
-              <View className="flex-1 ml-4">
-                <Text className="font-bold text-gray-800 text-base">
-                  {item.title}
-                </Text>
+                <View className="flex-1 ml-4">
+                  <Text className="font-bold text-gray-800 text-base">
+                    {item.title}
+                  </Text>
 
-                <Text className="text-gray-500 mt-1">{item.desc}</Text>
-              </View>
+                  <Text className="text-gray-500 mt-1">{item.desc}</Text>
+                </View>
 
-              <Ionicons name="chevron-forward" size={20} color="#9ca3af" />
-            </TouchableOpacity>
-          ))}
+                <Ionicons name="chevron-forward" size={20} color="#9ca3af" />
+              </TouchableOpacity>
+            ))
+          )}
         </View>
       </ScrollView>
     </View>

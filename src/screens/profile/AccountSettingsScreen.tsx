@@ -103,7 +103,15 @@ export default function AccountSettingsScreen() {
                 </Text>
               </View>
 
-              <Switch value={notification} onValueChange={setNotification} />
+              <Switch
+                value={notification}
+                onValueChange={setNotification}
+                trackColor={{
+                  false: "#d1d5db",
+                  true: "#22c55e",
+                }}
+                thumbColor={notification ? "#ffffff" : "#f4f4f5"}
+              />
             </View>
 
             {/* DARK MODE */}
@@ -116,7 +124,15 @@ export default function AccountSettingsScreen() {
                 </Text>
               </View>
 
-              <Switch value={darkMode} onValueChange={setDarkMode} />
+              <Switch
+                value={darkMode}
+                onValueChange={setDarkMode}
+                trackColor={{
+                  false: "#d1d5db",
+                  true: "#22c55e",
+                }}
+                thumbColor={darkMode ? "#ffffff" : "#f4f4f5"}
+              />
             </View>
           </View>
 
