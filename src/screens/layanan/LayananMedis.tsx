@@ -66,8 +66,8 @@ export default function LayananMedisScreen() {
       item.desc?.toLowerCase().includes(search.toLowerCase()),
   );
   const navigation = useNavigation<any>();
-  console.log("Search:", search);
-  console.log("Filtered:", filteredMedis);
+  // console.log("Search:", search);
+  // console.log("Filtered:", filteredMedis);
   return (
     <View className="flex-1 bg-gray-50">
       <ScrollView showsVerticalScrollIndicator={false}>

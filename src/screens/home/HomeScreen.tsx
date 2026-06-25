@@ -1,8 +1,19 @@
-import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  Animated,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 import { Ionicons, Feather, FontAwesome } from "@expo/vector-icons";
 
+import { useRef } from "react";
+
 import { useNavigation } from "@react-navigation/native";
+import QuickMenuCard from "../../components/cards/QuickMenuCard";
 
 const quickMenus = [
   {
@@ -74,6 +85,25 @@ const news = [
 ];
 
 export default function HomeScreen() {
+  const scale = useRef(new Animated.Value(1)).current;
+
+  const handlePress = (screen: string) => {
+    Animated.sequence([
+      Animated.timing(scale, {
+        toValue: 0.95,
+        duration: 80,
+        useNativeDriver: true,
+      }),
+      Animated.timing(scale, {
+        toValue: 1,
+        duration: 80,
+        useNativeDriver: true,
+      }),
+    ]).start(() => {
+      navigation.navigate(screen as any);
+    });
+  };
+
   const navigation = useNavigation<any>();
   return (
     <View className="flex-1 bg-[#f3f5f7]">
@@ -149,40 +179,24 @@ export default function HomeScreen() {
               Akses Cepat
             </Text>
 
-            <View className="flex-row flex-wrap justify-between">
+            <Animated.View
+              className="flex-row flex-wrap justify-between"
+              style={{
+                transform: [{ scale }],
+                opacity: scale.interpolate({
+                  inputRange: [0.95, 1],
+                  outputRange: [0.85, 1],
+                }),
+              }}
+            >
               {quickMenus.map((item, index) => (
-                <TouchableOpacity
+                <QuickMenuCard
                   key={index}
-                  activeOpacity={0.9}
-                  onPress={() => navigation.navigate(item.screen as any)}
-                  className="w-[30%] bg-white rounded-3xl p-4 items-center mb-4 shadow-sm"
-                  style={{
-                    shadowColor: "#000",
-                    shadowOffset: {
-                      width: 0,
-                      height: 3,
-                    },
-                    shadowOpacity: 0.06,
-                    shadowRadius: 6,
-                    elevation: 3,
-                  }}
-                >
-                  <View
-                    className={`${item.bg} w-14 h-14 rounded-2xl items-center justify-center`}
-                  >
-                    <Ionicons
-                      name={item.icon as any}
-                      size={24}
-                      color={item.color}
-                    />
-                  </View>
-
-                  <Text className="text-gray-700 text-center text-[11px] mt-3 font-semibold leading-5">
-                    {item.title}
-                  </Text>
-                </TouchableOpacity>
+                  item={item}
+                  navigation={navigation}
+                />
               ))}
-            </View>
+            </Animated.View>
           </View>
 
           {/* NEWS */}
