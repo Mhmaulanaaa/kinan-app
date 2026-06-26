@@ -14,24 +14,36 @@ const statuses = [
     color: "bg-green-100",
     text: "text-green-700",
     icon: "checkmark-circle",
+    iconColor: "#16a34a",
+    selectedBg: "bg-green-50",
+    selectedBorder: "border-green-500",
   },
   {
     title: "Sedang Operasi",
     color: "bg-blue-100",
     text: "text-blue-700",
     icon: "medkit",
+    iconColor: "#2563eb",
+    selectedBg: "bg-blue-50",
+    selectedBorder: "border-blue-500",
   },
   {
     title: "Istirahat",
     color: "bg-yellow-100",
     text: "text-yellow-700",
     icon: "cafe",
+    iconColor: "#ca8a04",
+    selectedBg: "bg-yellow-50",
+    selectedBorder: "border-yellow-500",
   },
   {
     title: "Offline",
     color: "bg-red-100",
     text: "text-red-700",
     icon: "close-circle",
+    iconColor: "#dc2626",
+    selectedBg: "bg-red-50",
+    selectedBorder: "border-red-500",
   },
 ];
 
@@ -81,7 +93,7 @@ export default function ChangeStatusScreen() {
                 onPress={() => setSelected(item.title)}
                 className={`rounded-[28px] p-5 mb-4 border-2 ${
                   isSelected
-                    ? "border-green-500 bg-green-50"
+                    ? item.selectedBorder + " " + item.selectedBg
                     : "border-transparent bg-white"
                 }`}
               >
@@ -92,7 +104,7 @@ export default function ChangeStatusScreen() {
                     <Ionicons
                       name={item.icon as any}
                       size={26}
-                      color="#16a34a"
+                      color={item.iconColor as any}
                     />
                   </View>
 
@@ -110,7 +122,7 @@ export default function ChangeStatusScreen() {
                     <Ionicons
                       name="checkmark-circle"
                       size={28}
-                      color="#16a34a"
+                      color={item.iconColor}
                     />
                   )}
                 </View>

@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
+  Animated,
+  Easing,
+  Pressable,
   View,
   Text,
   ScrollView,
@@ -84,17 +87,45 @@ export default function ChatInternalScreen() {
 
   const [showMenu, setShowMenu] = useState(false);
 
+  const backScale = useRef(new Animated.Value(1)).current;
+
+  const handleBackPressIn = () => {
+    Animated.timing(backScale, {
+      toValue: 0.94,
+      duration: 120,
+      easing: Easing.out(Easing.quad),
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handleBackPressOut = () => {
+    Animated.timing(backScale, {
+      toValue: 1,
+      duration: 150,
+      easing: Easing.out(Easing.quad),
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <View className="flex-1 bg-slate-100">
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* HEADER */}
         <View className="bg-green-600 px-5 pt-16 pb-8 rounded-b-[35px]">
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            className="w-12 h-12 rounded-2xl bg-white/20 items-center justify-center"
+          <Animated.View
+            style={{
+              transform: [{ scale: backScale }],
+            }}
           >
-            <Ionicons name="arrow-back" size={22} color="white" />
-          </TouchableOpacity>
+            <Pressable
+              onPressIn={handleBackPressIn}
+              onPressOut={handleBackPressOut}
+              onPress={() => navigation.goBack()}
+              className="w-12 h-12 rounded-2xl bg-white/20 items-center justify-center"
+            >
+              <Ionicons name="arrow-back" size={22} color="white" />
+            </Pressable>
+          </Animated.View>
 
           <Text className="text-white text-3xl font-extrabold mt-6">
             Chat Internal

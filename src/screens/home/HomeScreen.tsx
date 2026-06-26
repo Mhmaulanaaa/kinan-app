@@ -87,23 +87,6 @@ const news = [
 export default function HomeScreen() {
   const scale = useRef(new Animated.Value(1)).current;
 
-  const handlePress = (screen: string) => {
-    Animated.sequence([
-      Animated.timing(scale, {
-        toValue: 0.95,
-        duration: 80,
-        useNativeDriver: true,
-      }),
-      Animated.timing(scale, {
-        toValue: 1,
-        duration: 80,
-        useNativeDriver: true,
-      }),
-    ]).start(() => {
-      navigation.navigate(screen as any);
-    });
-  };
-
   const navigation = useNavigation<any>();
   return (
     <View className="flex-1 bg-[#f3f5f7]">

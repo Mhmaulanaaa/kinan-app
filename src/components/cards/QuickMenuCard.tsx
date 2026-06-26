@@ -9,12 +9,12 @@ export default function QuickMenuCard({ item, navigation }: any) {
     Animated.sequence([
       Animated.timing(scale, {
         toValue: 0.95,
-        duration: 80,
+        duration: 50,
         useNativeDriver: true,
       }),
       Animated.timing(scale, {
         toValue: 1,
-        duration: 80,
+        duration: 60,
         useNativeDriver: true,
       }),
     ]).start(() => {
@@ -41,7 +41,7 @@ export default function QuickMenuCard({ item, navigation }: any) {
           },
           shadowOpacity: 0.06,
           shadowRadius: 6,
-          elevation: 3,
+          elevation: 2,
         }}
       >
         <View
