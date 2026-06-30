@@ -148,7 +148,7 @@ export default function HomeScreen() {
               <View className="flex-row items-center mt-2">
                 <View className="w-2 h-2 rounded-full bg-green-300 mr-2" />
 
-                <Text className="text-green-100">24/7 staf sedang online</Text>
+                <Text className="text-green-100">24/7 staf sedang onlin˜e</Text>
               </View>
             </View>
           </View>

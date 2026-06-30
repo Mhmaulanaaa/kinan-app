@@ -1,6 +1,16 @@
-import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
+import {
+  Animated,
+  Easing,
+  Pressable,
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useRef, useState } from "react";
 
 const keuangan = [
   {
@@ -31,19 +41,46 @@ const keuangan = [
 
 export default function LayananKeuanganScreen() {
   const navigation = useNavigation<any>();
+
+  const backScale = useRef(new Animated.Value(1)).current;
+
+  const handleBackPressIn = () => {
+    Animated.timing(backScale, {
+      toValue: 0.94,
+      duration: 120,
+      easing: Easing.out(Easing.quad),
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handleBackPressOut = () => {
+    Animated.timing(backScale, {
+      toValue: 1,
+      duration: 150,
+      easing: Easing.out(Easing.quad),
+      useNativeDriver: true,
+    }).start();
+  };
   return (
     <View className="flex-1 bg-white">
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* HEADER */}
         <View className="bg-green-600 px-5 pt-16 pb-20 rounded-b-[35px]">
           {/* BACK BUTTON */}
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => navigation.goBack()}
-            className="w-12 h-12 rounded-2xl bg-white/20 items-center justify-center"
+          <Animated.View
+            style={{
+              transform: [{ scale: backScale }],
+            }}
           >
-            <Ionicons name="arrow-back" size={22} color="white" />
-          </TouchableOpacity>
+            <Pressable
+              onPressIn={handleBackPressIn}
+              onPressOut={handleBackPressOut}
+              onPress={() => navigation.goBack()}
+              className="w-12 h-12 rounded-2xl bg-white/20 items-center justify-center"
+            >
+              <Ionicons name="arrow-back" size={22} color="white" />
+            </Pressable>
+          </Animated.View>
 
           {/* TITLE */}
           <Text className="text-white text-3xl font-extrabold mt-8">
