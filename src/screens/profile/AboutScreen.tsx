@@ -1,11 +1,41 @@
-import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
+import {
+  Animated,
+  Easing,
+  Pressable,
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 
 import { Ionicons, MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
 
 import { useNavigation } from "@react-navigation/native";
 
+import { useRef } from "react";
+
 export default function AboutScreen() {
   const navigation = useNavigation<any>();
+  const backScale = useRef(new Animated.Value(1)).current;
+
+  const handleBackPressIn = () => {
+    Animated.timing(backScale, {
+      toValue: 0.94,
+      duration: 120,
+      easing: Easing.out(Easing.quad),
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handleBackPressOut = () => {
+    Animated.timing(backScale, {
+      toValue: 1,
+      duration: 150,
+      easing: Easing.out(Easing.quad),
+      useNativeDriver: true,
+    }).start();
+  };
 
   return (
     <View className="flex-1 bg-[#f4f7fb]">
@@ -13,13 +43,20 @@ export default function AboutScreen() {
         {/* HEADER */}
         <View className="bg-green-600 pt-10 pb-12 px-6 rounded-b-[30px] overflow-hidden">
           {/* BACK BUTTON */}
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => navigation.goBack()}
-            className="w-12 h-12 rounded-2xl bg-white/20 items-center justify-center"
+          <Animated.View
+            style={{
+              transform: [{ scale: backScale }],
+            }}
           >
-            <Ionicons name="arrow-back" size={22} color="white" />
-          </TouchableOpacity>
+            <Pressable
+              onPressIn={handleBackPressIn}
+              onPressOut={handleBackPressOut}
+              onPress={() => navigation.goBack()}
+              className="w-12 h-12 rounded-2xl bg-white/20 items-center justify-center"
+            >
+              <Ionicons name="arrow-back" size={22} color="white" />
+            </Pressable>
+          </Animated.View>
 
           {/* BG LOGO */}
           <Image
